@@ -190,7 +190,7 @@ func TestLongRunningQPS(t *testing.T) {
 		limit = 100
 		burst = 100
 	)
-	var numOK = int32(0)
+	numOK := int32(0)
 
 	lim := NewLimiter(limit, burst)
 
