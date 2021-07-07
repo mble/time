@@ -317,7 +317,7 @@ func (lim *Limiter) reserveN(now time.Time, n int, maxFutureReserve time.Duratio
 		}
 	}
 
-	now, last, tokens := lim.advance(now)
+	now, _, tokens := lim.advance(now)
 
 	// Calculate the remaining number of tokens resulting from the request.
 	tokens -= float64(n)
@@ -347,8 +347,6 @@ func (lim *Limiter) reserveN(now time.Time, n int, maxFutureReserve time.Duratio
 		lim.last = now
 		lim.tokens = tokens
 		lim.lastEvent = r.timeToAct
-	} else {
-		lim.last = last
 	}
 
 	lim.mu.Unlock()

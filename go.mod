@@ -1,1 +1,1 @@
-module golang.org/x/time
+module github.com/mble/time
